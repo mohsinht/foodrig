@@ -97,7 +97,6 @@ class MainLayout extends React.Component {
         <Layout className='layout'>
           {headerItems}
           <Layout>
-            <Header style={{ background: '#fff', padding: 0 }} />
             <Content style={{ padding: '0 50px' }}>
               <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
               <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
@@ -115,7 +114,7 @@ class MainLayout extends React.Component {
                   path='/register'
                   render={props => <Register axiosInstance={axiosInstance} />}
                 />
-                <Route exact path='/' component={HomePage} />
+                <Route exact path='/' component={About} />
 
                 <PrivateRoute
                   path='/dashboard'

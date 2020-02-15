@@ -20,7 +20,7 @@ class HeaderPublic extends React.Component {
     return (
       <Header>
         <div className='fg-logo'>
-          FOOD<span className='fg-logo-sub'>Rig</span>
+          FOOD<span className='fg-logo-sub'>Ring</span>
         </div>
         <Menu
           theme='dark'

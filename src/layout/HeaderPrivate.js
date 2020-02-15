@@ -19,7 +19,7 @@ class HeaderPrivate extends React.Component {
         }}
       >
         <div className='fp-logo-priv '>
-          FOOD<span className='fg-logo-sub'>Rig</span>
+          FOOD<span className='fg-logo-sub'>Ring</span>
         </div>
         <Menu
           theme='dark'

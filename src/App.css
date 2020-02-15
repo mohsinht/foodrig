@@ -48,14 +48,14 @@
   font-size: 24px;
   font-weight: 500;
 }
-.layout ant-layout.ant-layout-has-sider {
+.layout.ant-layout.ant-layout-has-sider {
   min-height: 100vh;
 }
 
 .fp-logo-priv {
   width: 120px;
   height: 31px;
-  margin: 20px 48px;
+  margin: 20px 45px;
   color: white;
   font-size: 24px;
   font-weight: 500;
