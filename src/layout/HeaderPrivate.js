@@ -22,6 +22,9 @@ class HeaderPrivate extends React.Component {
           <Menu.Item key='/about'>
             <Link to='/about'>About</Link>
           </Menu.Item>
+          <Menu.Item key='/dashboard'>
+            <Link to='/dashboard'>Dashboard</Link>
+          </Menu.Item>
           <Menu.Item key='/profile'>
             <Link to='/profile'>My Profile</Link>
           </Menu.Item>

@@ -48,12 +48,13 @@ const isLoggedIn = () => {
 class MainLayout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isAuthenticated: isLoggedIn() };
+    this.state = { isAuthenticated: isLoggedIn(), userProfile: {} };
   }
 
   async getProfileData() {
     await axiosInstance.get('/auth/user').then(resp => {
       console.log(resp);
+      this.populateProfile(resp.data);
     });
   }
 
@@ -75,6 +76,12 @@ class MainLayout extends React.Component {
     });
     this.getProfileData();
   };
+
+  componentDidMount() {
+    if (isLoggedIn()) {
+      this.getProfileData();
+    }
+  }
 
   render() {
     const headerItems = this.state.isAuthenticated ? (
@@ -105,12 +112,22 @@ class MainLayout extends React.Component {
               />
               <Route exact path='/' component={HomePage} />
 
-              <PrivateRoute path='/dashboard' component={HomePage} />
+              <PrivateRoute
+                path='/dashboard'
+                component={() => (
+                  <HomePage profileData={this.state.userProfile} />
+                )}
+              />
               <PrivateRoute
                 path='/logout'
                 component={() => <Logout doLogout={this.doLogout} />}
               />
-              <PrivateRoute path='/profile' component={Profile} />
+              <PrivateRoute
+                path='/profile'
+                component={() => (
+                  <Profile profileData={this.state.userProfile} />
+                )}
+              />
             </div>
           </Content>
           <FooterPublic />
