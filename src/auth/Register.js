@@ -276,7 +276,6 @@ class Register extends React.Component {
             rules: [
               {
                 type: 'array',
-                required: true,
                 message: 'Please select your habitual residence!'
               }
             ]

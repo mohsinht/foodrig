@@ -96,41 +96,47 @@ class MainLayout extends React.Component {
       <Router>
         <Layout className='layout'>
           {headerItems}
-          <Content style={{ padding: '0 50px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
-            <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-              <Route path='/about' component={About} />
-              <Route
-                path='/login'
-                render={props => (
-                  <Login doLogin={this.doLogin} axiosInstance={axiosInstance} />
-                )}
-              />
-              <Route
-                path='/register'
-                render={props => <Register axiosInstance={axiosInstance} />}
-              />
-              <Route exact path='/' component={HomePage} />
+          <Layout>
+            <Header style={{ background: '#fff', padding: 0 }} />
+            <Content style={{ padding: '0 50px' }}>
+              <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
+              <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+                <Route path='/about' component={About} />
+                <Route
+                  path='/login'
+                  render={props => (
+                    <Login
+                      doLogin={this.doLogin}
+                      axiosInstance={axiosInstance}
+                    />
+                  )}
+                />
+                <Route
+                  path='/register'
+                  render={props => <Register axiosInstance={axiosInstance} />}
+                />
+                <Route exact path='/' component={HomePage} />
 
-              <PrivateRoute
-                path='/dashboard'
-                component={() => (
-                  <HomePage profileData={this.state.userProfile} />
-                )}
-              />
-              <PrivateRoute
-                path='/logout'
-                component={() => <Logout doLogout={this.doLogout} />}
-              />
-              <PrivateRoute
-                path='/profile'
-                component={() => (
-                  <Profile profileData={this.state.userProfile} />
-                )}
-              />
-            </div>
-          </Content>
-          <FooterPublic />
+                <PrivateRoute
+                  path='/dashboard'
+                  component={() => (
+                    <HomePage profileData={this.state.userProfile} />
+                  )}
+                />
+                <PrivateRoute
+                  path='/logout'
+                  component={() => <Logout doLogout={this.doLogout} />}
+                />
+                <PrivateRoute
+                  path='/profile'
+                  component={() => (
+                    <Profile profileData={this.state.userProfile} />
+                  )}
+                />
+              </div>
+            </Content>
+            <FooterPublic />
+          </Layout>
         </Layout>
       </Router>
     );

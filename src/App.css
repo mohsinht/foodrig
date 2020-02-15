@@ -48,6 +48,18 @@
   font-size: 24px;
   font-weight: 500;
 }
+.layout ant-layout.ant-layout-has-sider {
+  min-height: 100vh;
+}
+
+.fp-logo-priv {
+  width: 120px;
+  height: 31px;
+  margin: 20px 48px;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+}
 .fg-logo-sub {
   color: #1890ff;
   font-weight: 400;

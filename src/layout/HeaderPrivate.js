@@ -2,19 +2,28 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import '../App.css';
-const { Header } = Layout;
+const { Header, Content, Footer, Sider } = Layout;
 
 class HeaderPrivate extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <Header>
-        <div className='fg-logo'>
+      <Sider
+        breakpoint='lg'
+        collapsedWidth='0'
+        onBreakpoint={broken => {
+          console.log(broken);
+        }}
+        onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
+        }}
+      >
+        <div className='fp-logo-priv '>
           FOOD<span className='fg-logo-sub'>Rig</span>
         </div>
         <Menu
           theme='dark'
-          mode='horizontal'
+          mode='inline'
           defaultSelectedKeys={['/about']}
           style={{ lineHeight: '64px' }}
           selectedKeys={[window.location.pathname]}
@@ -32,7 +41,7 @@ class HeaderPrivate extends React.Component {
             <Link to='/logout'>Logout</Link>
           </Menu.Item>
         </Menu>
-      </Header>
+      </Sider>
     );
   }
 }

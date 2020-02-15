@@ -64,9 +64,9 @@ class ChefProfile extends React.Component {
                 onChange={this.handleAccTypeChange}
                 disabled={true}
               >
-                <Radio.Button value='regChef'>Register as a Chef</Radio.Button>
+                <Radio.Button value='regChef'>Registered as Chef</Radio.Button>
                 <Radio.Button value='regCust'>
-                  Register as a Customer
+                  Registered as Customer
                 </Radio.Button>
               </Radio.Group>
             </Form.Item>
