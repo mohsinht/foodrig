@@ -198,7 +198,7 @@ class Register extends React.Component {
         {...formItemLayout}
         onSubmit={this.handleSubmit}
       >
-        <div className='title'>Create an account on FoodRig</div>
+        <div className='title'>Create an account on FoodRing</div>
 
         <Form.Item label='Account Type' {...formItemLayout}>
           <Radio.Group

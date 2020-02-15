@@ -54,7 +54,7 @@ class Login extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className='fg-login-form'>
-        <div className='title'>Login to FoodRig</div>
+        <div className='title'>Login to FoodRing</div>
         <Form.Item>
           {getFieldDecorator('email', {
             rules: [{ required: true, message: 'Please input your email!' }]
