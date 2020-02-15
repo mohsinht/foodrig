@@ -129,7 +129,10 @@ class MainLayout extends React.Component {
                 <PrivateRoute
                   path='/profile'
                   component={() => (
-                    <Profile profileData={this.state.userProfile} />
+                    <Profile
+                      profileData={this.state.userProfile}
+                      axiosInstance={axiosInstance}
+                    />
                   )}
                 />
               </div>
