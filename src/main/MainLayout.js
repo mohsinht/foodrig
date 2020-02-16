@@ -18,6 +18,7 @@ import ChefProfile from '../profile/ChefProfile';
 import Shifts from '../profile/Shifts';
 import AddShift from '../profile/AddShift';
 import Kitchen from './Kitchen';
+import OrderList from './OrderList';
 
 const { Header, Content, Footer } = Layout;
 
@@ -183,6 +184,16 @@ class MainLayout extends React.Component {
                   axiosInstance={axiosInstance}
                   component={() => (
                     <Kitchen
+                      profileData={this.state.userProfile}
+                      axiosInstance={axiosInstance}
+                    />
+                  )}
+                />
+                <PrivateRoute
+                  path='/orders'
+                  axiosInstance={axiosInstance}
+                  component={() => (
+                    <OrderList
                       profileData={this.state.userProfile}
                       axiosInstance={axiosInstance}
                     />

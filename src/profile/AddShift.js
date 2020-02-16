@@ -112,26 +112,6 @@ class AddShift extends React.Component {
         const keysTemp = Object.keys(err.response.data)[0];
         message.error(err.response.data[keysTemp]);
       });
-      // let resp;
-      // await this.props.axiosInstance
-      //   .post('/auth/login/', payload)
-      //   .then(resp => {
-      //     console.log(resp);
-      //     const keysTemp = Object.keys(resp.data)[0];
-  
-      //     if (resp.status === 200) {
-      //       message.success('Logged in successfully!');
-      //       localStorage.setItem('token', resp.data.key);
-      //       this.props.history.push('/dashboard');
-      //       this.props.doLogin();
-      //     } else {
-      //       message.warning(resp.data[keysTemp]);
-      //     }
-      //   })
-      //   .catch(err => {
-      //     const keysTemp = Object.keys(err.response.data)[0];
-      //     message.error(err.response.data[keysTemp]);
-      //   });
     }
 
     loadingMsg = () => {

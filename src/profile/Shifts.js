@@ -39,15 +39,16 @@ class Shifts extends React.Component {
         let shifts = []
         for (const shift of this.state.shifts) {
             let menu = []
-            for (const item of shift.menu_items) {
-                menu.push(<p>{item.name}</p>)
+            for (const item of shift.menu_items_detailed) {
+                menu.push(<p key={item.id}>{item.name}</p>)
             }
             shifts.push(
                 <Col span={8}>
-                    <Card title={shift.kitchen.name} bordered={false}>
+                    <Card title={shift.kitchen_name}>
                         <p>{shift.start_time} - {shift.end_time}</p>
                         <p><b>Menu</b></p> 
                         {menu}
+                        <p><b>Status: </b> {shift.status.toLowerCase().charAt(0).toUpperCase() + shift.status.substring(1).toLowerCase()} </p>
                     </Card>
                 </Col>
             )
