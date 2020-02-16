@@ -8,7 +8,7 @@ class FooterPublic extends React.Component {
   render() {
     return (
       <Footer style={{ textAlign: 'center' }}>
-        FoodRig © 2020 Created on Hackathon (Facebook DevC) by students from
+        FoodRing © 2020 Created on Hackathon (Facebook DevC) by students from
         FAST-NU Lahore
       </Footer>
     );
