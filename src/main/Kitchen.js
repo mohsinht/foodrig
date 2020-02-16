@@ -32,7 +32,7 @@ class Kitchen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      kitchenId: [],
+      kitchenId: 0,
       selected_spec: [],
       details: {}
     };
@@ -65,7 +65,57 @@ class Kitchen extends React.Component {
     this.getKitchenData();
   }
 
+  createItemCards(cards) {
+    const items = [];
+    for (const item of cards) {
+      items.push(
+        <Col key={item.id} span={8} style={{ marginBottom: 30 }}>
+          <Card
+            cover={
+              <img
+                style={{ objectFit: 'cover', height: 200 }}
+                src={
+                  item.image ||
+                  'https://toppng.com/uploads/preview/clipart-free-seaweed-clipart-draw-food-placeholder-11562968708qhzooxrjly.png'
+                }
+              />
+            }
+          >
+            <Meta
+              title={`${item.name} (${item.price}rs)`}
+              description={<Checkbox value={item.id}></Checkbox>}
+            />
+          </Card>
+        </Col>
+      );
+    }
+    return items;
+  }
+
+  orderNow = () => {
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log(values);
+        const payload = {
+          kitchen: parseInt(this.props.match.params.kitchenId),
+          items: values.menu_items,
+          chef: this.state.selectedShift.chef.id,
+          shift: this.state.selectedShift.id
+        };
+        console.log(payload);
+        this.addOrder(payload);
+      }
+    });
+  };
+  async addOrder(payload) {
+    await this.props.axiosInstance.post('/order/', payload).then(resp => {
+      message.success('Order added successfully!');
+      this.props.history.push('/dashboard');
+    });
+  }
+
   render() {
+    const { getFieldDecorator } = this.props.form;
     console.log(this.props.match);
     const shifts = this.state.details.approved_shifts;
     return (
@@ -87,10 +137,11 @@ class Kitchen extends React.Component {
                     <Col span={8} key={value.id}>
                       <Card
                         onClick={() => {
-                          this.selectCard(value.id);
+                          this.selectCard(value);
                         }}
                         className={
-                          this.state.selectedShift === value.id
+                          this.state.selectedShift &&
+                          this.state.selectedShift.id === value.id
                             ? 'kit-card kit-card-selected'
                             : 'kit-card'
                         }
@@ -111,8 +162,25 @@ class Kitchen extends React.Component {
             <>
               <br />
               <div className='cooking-now'>Whats Cooking?</div>
-
-              <Button type='primary'>Order Now</Button>
+              <br />
+              <Form.Item>
+                {getFieldDecorator('menu_items', {
+                  rules: [
+                    { required: true, message: 'Please select the menu!' }
+                  ]
+                })(
+                  <Checkbox.Group>
+                    <Row gutter={16}>
+                      {this.createItemCards(
+                        this.state.selectedShift.menu_items_detailed
+                      )}
+                    </Row>
+                  </Checkbox.Group>
+                )}
+              </Form.Item>
+              <Button type='primary' onClick={this.orderNow}>
+                Order Now
+              </Button>
             </>
           ) : (
             ' '
@@ -123,4 +191,6 @@ class Kitchen extends React.Component {
   }
 }
 
-export default withRouter(Kitchen);
+const KitchenTemp = Form.create({ name: 'kitchen_select' })(Kitchen);
+
+export default withRouter(KitchenTemp);

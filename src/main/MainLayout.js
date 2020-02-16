@@ -107,7 +107,7 @@ class MainLayout extends React.Component {
 
   render() {
     const headerItems = this.state.isAuthenticated ? (
-      <HeaderPrivate />
+      <HeaderPrivate profileData={this.state.userProfile} />
     ) : (
       <HeaderPublic />
     );
@@ -163,22 +163,14 @@ class MainLayout extends React.Component {
 
                 <PrivateRoute
                   path='/shifts/add'
-                  component={() => (
-                    <AddShift
-                      axiosInstance={axiosInstance}
-                    />
-                  )}
+                  component={() => <AddShift axiosInstance={axiosInstance} />}
                 />
 
                 <PrivateRoute
                   exact
                   path='/shifts'
-                  component={() => (
-                    <Shifts
-                    axiosInstance={axiosInstance}
-                    />
-                  )}>
-                </PrivateRoute>
+                  component={() => <Shifts axiosInstance={axiosInstance} />}
+                ></PrivateRoute>
                 <PrivateRoute
                   path='/kitchen/:kitchenId'
                   axiosInstance={axiosInstance}
