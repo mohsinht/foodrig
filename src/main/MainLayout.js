@@ -15,6 +15,8 @@ import PublicRoute from './PublicRoute';
 import HomePage from './HomePage';
 import Logout from '../auth/Logout';
 import ChefProfile from '../profile/ChefProfile';
+import Shifts from '../profile/Shifts';
+import AddShift from '../profile/AddShift';
 
 const { Header, Content, Footer } = Layout;
 
@@ -131,6 +133,25 @@ class MainLayout extends React.Component {
                   component={() => (
                     <Profile
                       profileData={this.state.userProfile}
+                      axiosInstance={axiosInstance}
+                    />
+                  )}
+                />
+
+                <PrivateRoute
+                  path='/shifts/add'
+                  component={() => (
+                    <AddShift
+                      axiosInstance={axiosInstance}
+                    />
+                  )}
+                />
+
+                <PrivateRoute
+                  exact
+                  path='/shifts'
+                  component={() => (
+                    <Shifts
                       axiosInstance={axiosInstance}
                     />
                   )}

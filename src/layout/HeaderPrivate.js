@@ -37,6 +37,9 @@ class HeaderPrivate extends React.Component {
           <Menu.Item key='/profile'>
             <Link to='/profile'>My Profile</Link>
           </Menu.Item>
+          <Menu.Item key='/shifts'>
+            <Link to='/shifts'>My Shifts</Link>
+          </Menu.Item>
           <Menu.Item key='/logout'>
             <Link to='/logout'>Logout</Link>
           </Menu.Item>
