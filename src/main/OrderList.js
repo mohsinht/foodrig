@@ -58,8 +58,8 @@ class OrderList extends React.Component {
         let orders = []
         for (const order of this.state.orders) {
             let items = [];
-            for (const item of order.items) {
-                orders.push(
+            for (const item of order.detailed_items) {
+                items.push(
                     <p key={item.id}>{item.name}</p>
                 )
             }
