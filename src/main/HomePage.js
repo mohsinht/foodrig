@@ -42,7 +42,7 @@ class HomePage extends React.Component {
         </div>
       </div>
     ) : (
-      <h1 style={{fontWeight: 'lighter'}}><b>Amount Due: </b>{profile.chef_profile.amount_due}</h1>
+      <h1 style={{fontWeight: 'lighter'}}><b>Amount Due: </b>{profile.chef_profile ? profile.chef_profile.amount_due : 0}</h1>
     );
 
     const user_first_name = this.props.profileData
