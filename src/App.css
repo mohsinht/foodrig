@@ -112,3 +112,20 @@
   text-align: center;
   margin-top: 16px;
 }
+.kitchen-container {
+  margin-top: 20px;
+}
+
+.kit-card {
+  text-align: center;
+  color: #001529;
+  cursor: pointer;
+}
+.kit-card-selected {
+  border-color: #0083ff;
+}
+.cooking-now {
+  text-align: center;
+  color: #001529;
+  font-size: 19px;
+}

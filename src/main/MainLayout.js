@@ -15,6 +15,7 @@ import PublicRoute from './PublicRoute';
 import HomePage from './HomePage';
 import Logout from '../auth/Logout';
 import ChefProfile from '../profile/ChefProfile';
+import Kitchen from './Kitchen';
 
 const { Header, Content, Footer } = Layout;
 
@@ -48,7 +49,11 @@ const isLoggedIn = () => {
 class MainLayout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isAuthenticated: isLoggedIn(), userProfile: {} };
+    this.state = {
+      isAuthenticated: isLoggedIn(),
+      userProfile: {},
+      kitchens: []
+    };
   }
 
   async getProfileData() {
@@ -57,6 +62,19 @@ class MainLayout extends React.Component {
       this.populateProfile(resp.data);
     });
   }
+
+  async getKitchens() {
+    await axiosInstance.get('/kitchen/').then(resp => {
+      console.log(resp);
+      this.populateKitchens(resp.data);
+    });
+  }
+
+  populateKitchens = payload => {
+    this.setState({
+      kitchens: payload
+    });
+  };
 
   populateProfile = payload => {
     this.setState({
@@ -80,6 +98,7 @@ class MainLayout extends React.Component {
   componentDidMount() {
     if (isLoggedIn()) {
       this.getProfileData();
+      this.getKitchens();
     }
   }
 
@@ -119,7 +138,10 @@ class MainLayout extends React.Component {
                 <PrivateRoute
                   path='/dashboard'
                   component={() => (
-                    <HomePage profileData={this.state.userProfile} />
+                    <HomePage
+                      kitchenData={this.state.kitchens}
+                      profileData={this.state.userProfile}
+                    />
                   )}
                 />
                 <PrivateRoute
@@ -130,6 +152,16 @@ class MainLayout extends React.Component {
                   path='/profile'
                   component={() => (
                     <Profile
+                      profileData={this.state.userProfile}
+                      axiosInstance={axiosInstance}
+                    />
+                  )}
+                />
+                <PrivateRoute
+                  path='/kitchen/:kitchenId'
+                  axiosInstance={axiosInstance}
+                  component={() => (
+                    <Kitchen
                       profileData={this.state.userProfile}
                       axiosInstance={axiosInstance}
                     />
