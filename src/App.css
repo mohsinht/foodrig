@@ -97,3 +97,18 @@
   max-width: 500px;
   margin: auto;
 }
+
+.new-container {
+  background: #eff6fd;
+  padding: 20px;
+  margin: 20px 0px;
+  border-radius: 7px;
+}
+.new-title {
+  text-align: center;
+  font-weight: 600;
+}
+.new-search {
+  text-align: center;
+  margin-top: 16px;
+}
